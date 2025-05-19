@@ -53,6 +53,7 @@ input:focus {
   color: #ffffff;
   font-size: 18px;
   cursor: point;
+  border-radius: 5px;
 }
 
 /*1rem = 16px*/
@@ -204,6 +205,18 @@ th.actions, td.actions {
   margin-bottom: 20px
 }
 
+.login-signup-form .form .message{
+  margin: 15px;
+  color: #b3b3b3;
+  font-size: 16px;
+  text-align: center;
+}
+
+.login-signup-form .form .message a {
+  color: #5b08a7;
+  text-decoration: none;
+
+}
 /*estilos para o default layout*/
 #defaultLayout{
   display: flex;
@@ -252,6 +265,9 @@ th.actions, td.actions {
     
 }
 
+.message {
+
+}
 /*update para login, update password, register, forgot password */
 
 

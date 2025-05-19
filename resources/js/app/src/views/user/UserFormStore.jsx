@@ -28,6 +28,7 @@ export default function UserFormStore ()
         });
     }
 
+    console.log(user.name);
     return(
         <Fragment>
             <div className="display">
@@ -41,7 +42,7 @@ export default function UserFormStore ()
                         placeholder="Nome" 
                         onChange={
                           e => setUser({
-                            //...user,name:e.target.value
+                            ...user,name:e.target.value
                           })
                        }
                         />
@@ -52,7 +53,7 @@ export default function UserFormStore ()
                         placeholder="E-mail" 
                         onChange={
                           e => setUser({
-                            //...user,email:e.target.value
+                            ...user,email:e.target.value
                           })
                         } 
                         />
@@ -62,7 +63,7 @@ export default function UserFormStore ()
                         placeholder="Senha" 
                         onChange={
                           e => setUser({
-                            //...user,password:e.target.value
+                            ...user,password:e.target.value
                           })
                         } 
                         />

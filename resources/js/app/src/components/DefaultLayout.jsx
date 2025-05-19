@@ -1,9 +1,31 @@
 import React, { Children } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Navigate, useNavigate} from 'react-router-dom'
+import { useLogin } from '../context/ContextProvider';
+import axiosClient from '../axiosClient';
 
 
 export default function DefaultLayout({children}) {
- 
+
+    const {token, _setUser, _setToken, user} = useLogin();
+    if(!token){
+        return <Navigate to="/login"/>
+    }
+
+    const Navigate = useNavigate();
+    const onLogout = (e) => {
+        e.preventDefault();
+        axiosClient.post('/logout',user.email)
+                    .then(()=>{
+                        _setUser({});
+                        _setToken(null);
+                        Navigate('/login');
+                    })
+                    .catch((error)=>{
+                        console.log(error);
+                    })
+    }
+
+    console.log(token);
     return (
     <div id="defaultLayout">
         <aside>
@@ -19,8 +41,8 @@ export default function DefaultLayout({children}) {
                     Sistema de controle de livros
                 </div>
                 <div>
-                    Pedro &nbsp; &nbsp;
-                    <a className='btn-logout'>Logout</a>
+                    {user.name} &nbsp; &nbsp;
+                    <a onClick={onLogout}className='btn-logout' href="#">Logout</a>
                 </div>
             </header>
             <main>
